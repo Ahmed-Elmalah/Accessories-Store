@@ -10,8 +10,10 @@ import DashboardLayout from "./layouts/DashboardLayout";
 import Home from "./pages/user/Home";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
-import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminDashboard from "./pages/admin/DashBoard";
 import StaffDashboard from "./pages/staff/StaffDashboard";
+import Products from "./pages/admin/Products";
+import OrdersPage from "./pages/admin/Orders";
 
 function App() {
   return (
@@ -42,13 +44,20 @@ function App() {
         path="/admin"
         element={
           <ProtectedRoute allowedRoles={["admin"]}>
+
             <DashboardLayout />
           </ProtectedRoute>
         }
       >
         <Route index element={<AdminDashboard />} />
-        {/* other admin pages like /admin/users can go here */}
-      </Route>
+
+  <Route path="products" element={<Products />} />
+  
+   <Route path="orders" element={<OrdersPage/>} />
+  <Route path="promotions" element={<div className="p-8 text-white">صفحة العروض (قريباً)</div>} />
+  <Route path="staff" element={<div className="p-8 text-white">صفحة الموظفين (قريباً)</div>} />
+  <Route path="settings" element={<div className="p-8 text-white">صفحة الإعدادات (قريباً)</div>} /> 
+</Route>
 
       {/* Staff Protected Routes */}
       <Route
