@@ -19,15 +19,10 @@ import OrderTrackingPage from "./pages/user/OrderTrackingPage";
 import CategoriesPage from "./pages/user/CategoriesPage";
 import LoginPage from "./pages/auth/LoginPage";
 import SignupPage from "./pages/auth/SignupPage";
-import AdminDashboardPage from "./pages/admin/AdminDashboardPage";
 import StaffDashboardPage from "./pages/staff/StaffDashboardPage";
-import Home from "./pages/user/Home";
-import Login from "./pages/auth/Login";
-import Signup from "./pages/auth/Signup";
-import AdminDashboard from "./pages/admin/DashBoard";
-import StaffDashboard from "./pages/staff/StaffDashboard";
 import Products from "./pages/admin/Products";
 import OrdersPage from "./pages/admin/Orders";
+import AdminDashboard from "./pages/admin/AdminDashboardPage";
 
 function App() {
   return (

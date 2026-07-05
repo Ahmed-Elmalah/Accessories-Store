@@ -4,7 +4,6 @@ import { FiUser, FiPackage, FiHeart, FiLogOut, FiTruck } from "react-icons/fi";
 import { MdWorkspacePremium, MdBadge } from "react-icons/md";
 import toast from "react-hot-toast";
 
-export default function ProfilePage() {
 import useLogin from "../../auth/useLogin";
 
 export default function ProfilePage() {
