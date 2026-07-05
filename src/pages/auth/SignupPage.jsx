@@ -3,10 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import toast from "react-hot-toast";
-import useLogin from "../../../auth/useLogin";
-import AuthLayout from "../../../components/auth/AuthLayout";
-import AuthInput from "../../../components/auth/AuthInput";
-import AuthButton from "../../../components/auth/AuthButton";
+import { FiUserPlus } from "react-icons/fi";
+import useLogin from "../../auth/useLogin";
+import AuthLayout from "../../components/auth/AuthLayout";
+import AuthInput from "../../components/auth/AuthInput";
+import AuthButton from "../../components/auth/AuthButton";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -153,7 +154,7 @@ export default function Signup() {
           .
         </p>
 
-        <AuthButton type="submit" loading={loading}>
+        <AuthButton type="submit" loading={loading} icon={<FiUserPlus />}>
           Create Account
         </AuthButton>
 
