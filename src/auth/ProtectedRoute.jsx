@@ -53,8 +53,11 @@ export default function ProtectedRoute({ children, allowedRoles = [] }) {
   if (allowedRoles.length > 0) {
     const normalizedAllowed = allowedRoles.map((r) => r.toLowerCase().trim());
 
+    // Allow substring match (e.g., userRole "store staff" matches allowed "staff")
+    const isAllowed = normalizedAllowed.some((allowed) => userRole.includes(allowed));
+
     // If user's role is NOT in the allowed list → redirect to their own page
-    if (!normalizedAllowed.includes(userRole)) {
+    if (!isAllowed) {
       const correctPath = getRedirectByRole(userRole);
       return <Navigate to={correctPath} replace />;
     }

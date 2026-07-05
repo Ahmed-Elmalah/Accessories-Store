@@ -84,13 +84,23 @@ export default function useLogin() {
       // Get redirect path from roleConfig (no hardcoded roles here)
       const roleName = userInfo?.role?.name || "";
       const redirectPath = getRedirectByRole(roleName);
+      
+      console.log("Logged in as:", userInfo.email, "| Role:", roleName, "| Redirecting to:", redirectPath);
 
-      // If the user was trying to access a specific page before login, go there
-      if (from && from !== "/login" && from !== redirectPath) {
-        navigate(from, { replace: true });
-      } else {
-        navigate(redirectPath, { replace: true });
+      // Determine final path:
+      // - Regular users (redirectPath === "/") can be redirected back to any public page they came from.
+      // - Staff/Admins should only be redirected back to 'from' if it's within their dashboard (e.g., from starts with /staff or /admin).
+      let finalPath = redirectPath;
+
+      if (from && from !== "/login") {
+        if (redirectPath === "/") {
+          finalPath = from;
+        } else if (from.startsWith(redirectPath)) {
+          finalPath = from;
+        }
       }
+
+      navigate(finalPath, { replace: true });
     } catch (err) {
       // Token is invalid or expired — log the user out
       console.error("Token check failed:", err);

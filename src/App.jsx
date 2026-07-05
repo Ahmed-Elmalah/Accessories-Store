@@ -6,6 +6,7 @@ import ProtectedRoute from "./auth/ProtectedRoute";
 import StoreLayout from "./components/user/layout/StoreLayout";
 import ScrollToTop from "./components/user/layout/ScrollToTop";
 import DashboardLayout from "./layouts/DashboardLayout";
+import StaffLayout from "./layouts/StaffLayout";
 
 // Pages
 import HomePage from "./pages/user/HomePage";
@@ -23,6 +24,7 @@ import StaffDashboardPage from "./pages/staff/StaffDashboardPage";
 import Products from "./pages/admin/Products";
 import OrdersPage from "./pages/admin/Orders";
 import AdminDashboard from "./pages/admin/AdminDashboard";
+import StaffOrderDetailsPage from "./pages/staff/StaffOrderDetailsPage";
 
 function App() {
   return (
@@ -97,12 +99,12 @@ function App() {
           path="/staff"
           element={
             <ProtectedRoute allowedRoles={["staff"]}>
-              <DashboardLayout />
+              <StaffLayout />
             </ProtectedRoute>
           }
         >
           <Route index element={<StaffDashboardPage />} />
-          {/* other staff pages like /staff/orders can go here */}
+          <Route path="orders/:id" element={<StaffOrderDetailsPage />} />
         </Route>
 
         {/* Fallback 404 Route */}

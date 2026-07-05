@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order Details - LaFleur Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;600;700;800;900&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "surface": "#0a0a0a",
+              "surface-container": "#111111",
+              "surface-container-low": "#1a1a1a",
+              "surface-container-high": "#222222",
+              "primary": "#D4AF37",
+              "on-surface": "#ffffff",
+              "on-surface-variant": "#a3a3a3",
+              "outline": "#333333",
+              "outline-variant": "#262626"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Public Sans", "sans-serif"],
+                    "display": ["Public Sans", "sans-serif"],
+                    "body": ["Inter", "sans-serif"],
+                    "label": ["Public Sans", "sans-serif"]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.surface');
+            color: theme('colors.on-surface');
+        }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden font-body antialiased">
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden bg-surface relative">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center h-16 px-8 bg-surface shrink-0 z-10 border-b border-outline-variant">
+<!-- Logo Area -->
+<div class="flex items-center">
+<h1 class="text-2xl font-headline font-black tracking-tighter text-primary">LaFleur</h1>
+</div>
+<!-- Search Bar -->
+<div class="flex-1 max-w-md mx-8">
+<div class="relative">
+<span class="absolute inset-y-0 left-0 flex items-center pl-3">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+</span>
+<input class="w-full bg-surface-container border border-outline-variant text-white font-body text-sm rounded-lg focus:ring-primary focus:border-primary block pl-10 p-2.5" placeholder="Search orders, clients, items..." type="text"/>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 border-l border-outline-variant pl-6">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<img alt="Staff Avatar" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="Close up professional portrait of a stylish luxury boutique sales assistant with elegant lighting against a dark gray background, highly detailed 8k." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCedRtwvfSSRLxIbN6mMf025yq4QyTL8v46s7twycZ0nNpIS-lW-uPFx-mH90erU5bv_fE91ZDwt_AaMghvx_Y5MT86xPBSRlKDeen_PgPcNetf1806MBJVI_B57G2Io84aecIAgfwBNjD82cpKYvrMo-p6UC7YZRE78xYDBmh-h1IQpAN78QeOMOOzDuKbIRWrCYnxdGUp7v732B1aFOlPXZZOV3bKXE4AZQSFHSYV2PaYlfUBUJUyPXqOfpoip_NvNV8ABMgLQXP"/>
+</div>
+</div>
+</header>
+<!-- Sub Header -->
+<div class="flex justify-between items-center py-6 px-8 border-b border-outline-variant shrink-0">
+<div class="flex items-center gap-4">
+<a class="text-on-surface-variant hover:text-primary transition-colors flex items-center" href="#">
+<span class="material-symbols-outlined text-xl">arrow_back</span>
+</a>
+<h2 class="font-headline font-semibold text-white text-2xl tracking-wide flex items-center gap-3">
+            Order #LAF-1024
+            <span class="px-2 py-0.5 rounded text-xs font-label font-bold tracking-widest uppercase border border-primary text-primary bg-primary/10">Pending</span>
+</h2>
+</div>
+<button class="px-4 py-2 text-sm font-label tracking-widest uppercase text-primary border border-primary hover:bg-primary hover:text-surface rounded transition-colors duration-300 flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">print</span>
+        Print Invoice
+    </button>
+</div>
+<!-- Scrollable Canvas -->
+<div class="flex-1 overflow-y-auto p-8 relative">
+<div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8 pb-12">
+<!-- LEFT COLUMN (65%) -->
+<div class="lg:w-[65%] flex flex-col gap-8">
+<!-- Items Ordered Card -->
+<section class="bg-surface-container rounded-xl p-6 border border-outline-variant shadow-lg backdrop-blur-sm">
+<h3 class="font-headline font-semibold text-white text-sm tracking-widest uppercase mb-6 flex items-center gap-2 border-b border-outline-variant pb-4">
+<span class="material-symbols-outlined text-primary text-lg">shopping_bag</span>
+                            Items Ordered
+                        </h3>
+<div class="space-y-6">
+<!-- Item 1 -->
+<div class="flex items-start gap-4">
+<div class="w-20 h-20 rounded bg-surface-container-high shrink-0 overflow-hidden border border-outline-variant relative">
+<img class="w-full h-full object-cover" data-alt="Macro photography of a stunning, intricate gold ring with ethereal filigree details and a central glowing diamond, placed on a dark slate surface, dramatic spotlighting, high luxury aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC07BjA5cROPXBHWafeKD8CCIahAOMQYMTa7Zi0C3ohRp2lBBEhgFUoTOMHlQdEF0RyeXN5I5sNSn2C6_f3VWDLGsOZ-hNTCrsoAXesid6T7cdpBixwdg7c2iYVifgYdLz8m5CR1S9eSg330Ks8xG2QP0t6CZe2kNEH-5cgXHPT-9Ogv72TUcanNemjRa-JebSPf8tWVo6dNXTvZTnaidwB4CUqf7pA-ss2OoDVpxcPx1-ndwIsjeYP9QavgLXDbHa3kiSijzG21nVZ"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline font-semibold text-white text-base">Ethereal Gold Ring</h4>
+<p class="font-body text-on-surface-variant text-sm mt-1">18k Yellow Gold, Diamond Accent</p>
+<p class="font-body text-on-surface-variant text-xs mt-1">SKU: LAF-R-7729</p>
+</div>
+<div class="text-right">
+<p class="font-headline font-bold text-white">$1,850</p>
+<p class="font-body text-on-surface-variant text-sm mt-1">Qty: 1</p>
+</div>
+</div>
+</div>
+</div>
+<hr class="border-outline-variant border-dashed"/>
+<!-- Item 2 -->
+<div class="flex items-start gap-4">
+<div class="w-20 h-20 rounded bg-surface-container-high shrink-0 overflow-hidden border border-outline-variant relative">
+<img class="w-full h-full object-cover" data-alt="High-end studio shot of a thick, sculpted yellow gold cuff bracelet resting on black velvet. Subtle, soft reflections highlight the smooth curves of the metal. Elegant, dark luxury vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqDxGToIT4DUybFH2CzFK2BDBZ_-KFJDzbPFhb0G5TXvRl55-FIOf1OnEZoY4vGn1kdOMfMn9MZHn1Uirxl3YiL-Y4nPrbTVdPJrP7Cqm40XoZLU4MLTYVIP5AOoWkt4z0uo9p7OikdT0S22gkjQlrs5aJY2mx7f3R5v1NN5bIM_DA6nRHFWmooq8fESImcSuyLPKQqvQow0HdDEXmCo8mbx1bNFrF9wzR44PKpC_DRYysJqk6DwWNOgudDGMOV9hETEMIMArcz11T"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="font-headline font-semibold text-white text-base">Aura Gold Cuff</h4>
+<p class="font-body text-on-surface-variant text-sm mt-1">Solid 24k Gold, Matte Finish</p>
+<p class="font-body text-on-surface-variant text-xs mt-1">SKU: LAF-B-4410</p>
+</div>
+<div class="text-right">
+<p class="font-headline font-bold text-white">$1,800</p>
+<p class="font-body text-on-surface-variant text-sm mt-1">Qty: 1</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Order Timeline Card -->
+<section class="bg-surface-container rounded-xl p-6 border border-outline-variant shadow-lg">
+<h3 class="font-headline font-semibold text-white text-sm tracking-widest uppercase mb-6 flex items-center gap-2 border-b border-outline-variant pb-4">
+<span class="material-symbols-outlined text-primary text-lg">schedule</span>
+                            Order Timeline
+                        </h3>
+<div class="pl-4 py-2 relative">
+<!-- Vertical Line -->
+<div class="absolute top-0 bottom-0 left-6 w-px bg-outline-variant"></div>
+<div class="space-y-8 relative">
+<!-- Step 1: Placed -->
+<div class="flex gap-6 relative z-10">
+<div class="w-4 h-4 rounded-full bg-primary ring-4 ring-surface-container mt-1 shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-surface font-bold">check</span>
+</div>
+<div>
+<h4 class="font-headline font-semibold text-white text-sm">Order Placed</h4>
+<p class="font-body text-on-surface-variant text-xs mt-1">Oct 24, 2023 - 09:41 AM</p>
+</div>
+</div>
+<!-- Step 2: Payment -->
+<div class="flex gap-6 relative z-10">
+<div class="w-4 h-4 rounded-full bg-primary ring-4 ring-surface-container mt-1 shrink-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-surface font-bold">check</span>
+</div>
+<div>
+<h4 class="font-headline font-semibold text-white text-sm">Payment Confirmed</h4>
+<p class="font-body text-on-surface-variant text-xs mt-1">Oct 24, 2023 - 09:45 AM</p>
+</div>
+</div>
+<!-- Step 3: Processing (Active) -->
+<div class="flex gap-6 relative z-10">
+<div class="w-4 h-4 rounded-full bg-surface border-2 border-primary ring-4 ring-primary/20 mt-1 shrink-0"></div>
+<div>
+<h4 class="font-headline font-bold text-primary text-sm">Processing</h4>
+<p class="font-body text-primary/70 text-xs mt-1">Preparing for shipment in Paris boutique.</p>
+</div>
+</div>
+<!-- Step 4: Shipped (Future) -->
+<div class="flex gap-6 relative z-10 opacity-40">
+<div class="w-4 h-4 rounded-full bg-surface border-2 border-outline-variant ring-4 ring-surface-container mt-1 shrink-0"></div>
+<div>
+<h4 class="font-headline font-semibold text-white text-sm">Shipped</h4>
+<p class="font-body text-on-surface-variant text-xs mt-1">Pending carrier pickup.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- RIGHT COLUMN (35%) -->
+<div class="lg:w-[35%] flex flex-col gap-6">
+<!-- Customer Details Card -->
+<section class="bg-surface-container rounded-xl p-5 border border-outline-variant shadow-lg">
+<h3 class="font-headline font-semibold text-white text-xs tracking-widest uppercase mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">person</span>
+                            Customer Details
+                        </h3>
+<div class="flex items-center gap-4 mb-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-high border border-outline flex items-center justify-center text-primary font-headline font-bold text-lg">
+                                EV
+                            </div>
+<div>
+<h4 class="font-headline font-semibold text-white">Eleanor Vance</h4>
+<p class="font-body text-on-surface-variant text-xs flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]">star</span> VIP Client
+                                </p>
+</div>
+</div>
+<div class="space-y-3 font-body text-sm text-on-surface-variant">
+<p class="flex items-center gap-3">
+<span class="material-symbols-outlined text-base">mail</span>
+                                eleanor.v@lafleur.com
+                            </p>
+<p class="flex items-center gap-3">
+<span class="material-symbols-outlined text-base">call</span>
+                                +33 1 23 45 67 89
+                            </p>
+</div>
+</section>
+<!-- Shipping Address Card -->
+<section class="bg-surface-container rounded-xl p-5 border border-outline-variant shadow-lg">
+<h3 class="font-headline font-semibold text-white text-xs tracking-widest uppercase mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">local_shipping</span>
+                            Shipping Details
+                        </h3>
+<div class="font-body text-sm text-on-surface-variant space-y-1">
+<p class="font-semibold text-white">Eleanor Vance</p>
+<p>42 Rue de Rivoli</p>
+<p>Paris, 75001</p>
+<p>France</p>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant">
+<p class="font-label text-xs uppercase tracking-widest text-primary mb-1">Method</p>
+<p class="font-body text-sm text-white font-medium">Express Insured Delivery</p>
+</div>
+</section>
+<!-- Order Summary Card -->
+<section class="bg-surface-container rounded-xl p-5 border border-outline-variant shadow-lg">
+<h3 class="font-headline font-semibold text-white text-xs tracking-widest uppercase mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-base">receipt_long</span>
+                            Order Summary
+                        </h3>
+<div class="space-y-3 font-body text-sm">
+<div class="flex justify-between text-on-surface-variant">
+<span>Subtotal (2 items)</span>
+<span class="text-white">$3,650.00</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Shipping (Express)</span>
+<span class="text-white">$45.00</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Tax (Included)</span>
+<span class="text-white">$0.00</span>
+</div>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant flex justify-between items-center">
+<span class="font-headline font-bold text-white text-sm uppercase tracking-wide">Total</span>
+<span class="font-headline font-bold text-primary text-xl">$3,695.00</span>
+</div>
+</section>
+<!-- Update Status Card -->
+<section class="bg-surface-container-high rounded-xl p-5 border border-primary/20 shadow-lg relative overflow-hidden">
+<!-- subtle gold glow in bg -->
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none"></div>
+<h3 class="font-headline font-semibold text-white text-xs tracking-widest uppercase mb-4 relative z-10">
+                            Update Status
+                        </h3>
+<div class="relative z-10 space-y-4">
+<div>
+<label class="sr-only">Status</label>
+<select class="w-full bg-surface border border-outline-variant text-white font-body text-sm rounded-lg focus:ring-primary focus:border-primary block p-2.5">
+<option value="pending">Pending</option>
+<option selected="" value="processing">Processing</option>
+<option value="shipped">Shipped</option>
+<option value="delivered">Delivered</option>
+<option value="cancelled">Cancelled</option>
+</select>
+</div>
+<button class="w-full py-2.5 bg-primary text-surface font-headline font-bold text-sm uppercase tracking-widest rounded-lg hover:bg-white hover:text-surface transition-all shadow-[0_0_15px_rgba(212,175,55,0.3)]">
+                                Update Order
+                            </button>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+</body></html>
