@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { FiSearch, FiHeart, FiShoppingBag, FiMenu, FiFeather, FiX } from "react-icons/fi";
+import { FiSearch, FiHeart, FiShoppingBag, FiMenu, FiFeather, FiX, FiUser } from "react-icons/fi";
 import { useCartStore } from "../../../store/useCartStore";
+import { useAuthStore } from "../../../auth/authStore";
 
 export default function Navbar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const toggleCart = useCartStore((state) => state.toggleCart);
   const itemCount = useCartStore((state) => state.getItemCount());
+  const user = useAuthStore((state) => state.user);
   const location = useLocation();
 
   const currentPath = location.pathname;
@@ -100,12 +102,23 @@ export default function Navbar() {
               )}
             </button>
           </div>
-          <Link
-            className="hidden lg:inline-flex text-neutral-400 hover:text-[#D4AF37] transition-colors text-sm uppercase tracking-widest"
-            to="/login"
-          >
-            Login
-          </Link>
+          {user ? (
+            <Link
+              to="/profile"
+              className="hidden lg:flex items-center gap-2 text-neutral-400 hover:text-[#D4AF37] transition-colors text-sm uppercase tracking-widest"
+            >
+              <FiUser className="text-xl" />
+              <span>{user.username}</span>
+            </Link>
+          ) : (
+            <Link
+              className="hidden lg:inline-flex text-neutral-400 hover:text-[#D4AF37] transition-colors text-sm uppercase tracking-widest"
+              to="/login"
+              state={{ from: location }}
+            >
+              Login
+            </Link>
+          )}
 
           {/* Mobile menu button */}
           <div className="-mr-2 flex items-center md:hidden">

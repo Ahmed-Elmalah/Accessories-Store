@@ -8,6 +8,7 @@
 // ============================================================
 
 import { useNavigate, useLocation } from "react-router-dom";
+import toast from "react-hot-toast";
 import LoginRepo from "./LoginRepo";
 import { useAuthStore } from "./authStore";
 import { getRedirectByRole, defaultRedirect } from "./roleConfig";
@@ -93,7 +94,9 @@ export default function useLogin() {
     } catch (err) {
       // Token is invalid or expired — log the user out
       console.error("Token check failed:", err);
+      toast.error("Could not fetch user profile. Please check server permissions.");
       logOut();
+      throw err;
     }
   };
 

@@ -21,7 +21,7 @@ export const roleConfig = {
 };
 
 // Fallback redirect if the role is unknown or missing
-export const defaultRedirect = "/login";
+export const defaultRedirect = "/";
 
 // Helper: get the redirect path for a given role string
 export const getRedirectByRole = (roleName = "") => {
