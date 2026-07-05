@@ -5,6 +5,10 @@ import { MdWorkspacePremium, MdBadge } from "react-icons/md";
 import toast from "react-hot-toast";
 
 export default function ProfilePage() {
+import useLogin from "../../auth/useLogin";
+
+export default function ProfilePage() {
+  const { logOut } = useLogin();
   const [user, setUser] = useState({
     firstName: "Ahmed",
     lastName: "Elmalah",
