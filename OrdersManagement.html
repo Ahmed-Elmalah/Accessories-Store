@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LaFleur - Orders Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;700;900&amp;family=Inter:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#0a0a0a',
+                        surface: '#111111',
+                        gold: '#D4AF37',
+                        'gold-light': 'rgba(212, 175, 55, 0.1)',
+                        textMain: '#ffffff',
+                        textMuted: '#9ca3af',
+                        borderLight: 'rgba(255, 255, 255, 0.05)',
+                        statusPending: 'rgba(212, 175, 55, 0.15)',
+                        statusPendingText: '#D4AF37',
+                        statusDelivered: 'rgba(16, 185, 129, 0.15)',
+                        statusDeliveredText: '#10b981'
+                    },
+                    fontFamily: {
+                        headline: ["Public Sans", "sans-serif"],
+                        display: ["Public Sans", "sans-serif"],
+                        body: ["Inter", "sans-serif"],
+                        label: ["Public Sans", "sans-serif"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #222222;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #333333;
+        }
+    </style>
+</head>
+<body class="bg-background text-textMain font-body min-h-screen flex selection:bg-gold selection:text-black antialiased">
+<!-- Main Content Area (Full Width) -->
+<main class="flex-1 min-h-screen flex flex-col w-full relative overflow-x-hidden">
+<!-- TopNavBar (Redesigned) -->
+<header class="flex justify-between items-center h-16 px-4 md:px-8 w-full border-b border-borderLight bg-surface sticky top-0 z-10 backdrop-blur-md">
+<!-- Far Left: Logo -->
+<div class="flex-shrink-0 flex items-center mr-4">
+<img alt="LaFleur Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AP1WRLtg8soeOAoNypZa_LvRG1GK-leWUaYNs1jFjUueI164ScbTBxmP5Yj7LCJcStK7ROJUjvIKlplPOUyKLBCdGXcpzmN75t1iGA9msjKKWZoGo8r5clFJEW57fKPtmlejUwNXX5Vn1W6XGLpVCHz96YuBkZR11nTRGLEn01juv20bCmXkSyEdovkItSlcOpJUyYdcYJuwwV2a4u3f9NJ4OywnIJe7C5If-lYn8CUR5o20-Vnoa-sIZUnCqbQ"/>
+</div>
+<!-- Middle: Search Bar & Filters -->
+<div class="flex-1 flex justify-center items-center gap-4 mx-2">
+<!-- Search Bar -->
+<div class="w-full max-w-md relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-textMuted text-sm">search</span>
+<input class="w-full bg-background border-borderLight rounded-full py-2 pl-10 pr-4 text-sm text-textMain placeholder-textMuted focus:outline-none focus:ring-1 focus:ring-gold focus:border-gold transition-all" placeholder="Search orders..." type="text"/>
+</div>
+<!-- Filters -->
+<div class="hidden lg:flex flex-wrap items-center gap-3">
+<!-- Status Filter -->
+<div class="relative group min-w-[140px]">
+<button class="w-full flex items-center justify-between gap-2 px-4 py-2 bg-background border border-borderLight rounded-lg text-sm text-textMain hover:border-gold/50 transition-colors">
+<span class="flex items-center gap-2 text-textMuted"><span class="material-symbols-outlined text-[18px]">filter_list</span> All Statuses</span>
+<span class="material-symbols-outlined text-[16px] text-textMuted">expand_more</span>
+</button>
+</div>
+<!-- Date Filter -->
+<div class="relative group min-w-[160px]">
+<button class="w-full flex items-center justify-between gap-2 px-4 py-2 bg-background border border-borderLight rounded-lg text-sm text-textMain hover:border-gold/50 transition-colors">
+<span class="flex items-center gap-2 text-textMuted"><span class="material-symbols-outlined text-[18px]">calendar_today</span> Last 30 Days</span>
+<span class="material-symbols-outlined text-[16px] text-textMuted">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Far Right: Actions -->
+<div class="flex items-center gap-4 flex-shrink-0 ml-4">
+<button class="text-textMuted hover:text-gold transition-all hover:scale-95 duration-150 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-gold rounded-full ring-2 ring-background"></span>
+</button>
+<!-- Staff Profile Avatar -->
+<img alt="Staff Avatar" class="w-8 h-8 rounded-full object-cover border border-surface" data-alt="A small, professional circular avatar portrait of a modern luxury retail staff member against a dark, moody background, lit by soft dramatic studio lighting. The image should convey high-end service and elegance, suited for a dark mode UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMtSno-jGJcY9qxp4p0Z-nkZDJCF8CSpxPHlzm2zii3CPJ9EOQYGdMw5nqvZOaVX24GdjGqXWQTDc88DnnlcrSQWq5ajH8tx6PVfyXpoe6YMEaB-I0IDBPXMLK6CH3jzSs41Ak52ejwooTtvtNODhhyhv0D1h_Gq8zTVBBIodw9NTX2p8ob_Yy4FODb-9lheqfbpOUDQLcLaRKXkdfVAZlPXBHGrOKcQ6VfGV96aUgNtPJINiTDuBYiveMuYLex3pdZPapzWo5Juak"/>
+</div>
+</header>
+<!-- Content Canvas (Full Width) -->
+<div class="p-4 md:p-8 flex-1 w-full space-y-6">
+<!-- Orders Table Card -->
+<div class="bg-surface rounded-xl border border-gold-light overflow-hidden shadow-2xl w-full">
+<div class="overflow-x-auto w-full">
+<table class="w-full text-left border-collapse whitespace-nowrap">
+<thead>
+<tr class="border-b border-borderLight text-xs uppercase tracking-wider text-textMuted font-label font-semibold bg-surface">
+<th class="px-6 py-4">Order ID</th>
+<th class="px-6 py-4">Customer Name</th>
+<th class="px-6 py-4">Date</th>
+<th class="px-6 py-4">Total Amount</th>
+<th class="px-6 py-4">Status</th>
+<th class="px-6 py-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-borderLight text-sm font-body">
+<!-- Row 1 -->
+<tr class="hover:bg-background/50 transition-colors group">
+<td class="px-6 py-4 font-mono text-gold">#LF-8921</td>
+<td class="px-6 py-4 font-medium">Eleanor Vance</td>
+<td class="px-6 py-4 text-textMuted">Oct 24, 2023</td>
+<td class="px-6 py-4 font-semibold">$1,250.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-statusDelivered text-statusDeliveredText border border-statusDeliveredText/20">
+                                        Delivered
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-textMuted hover:text-gold transition-colors p-1" title="View Order">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-background/50 transition-colors group">
+<td class="px-6 py-4 font-mono text-gold">#LF-8920</td>
+<td class="px-6 py-4 font-medium">Marcus Sterling</td>
+<td class="px-6 py-4 text-textMuted">Oct 24, 2023</td>
+<td class="px-6 py-4 font-semibold">$3,400.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-statusPending text-statusPendingText border border-gold/30">
+                                        Pending
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-textMuted hover:text-gold transition-colors p-1" title="View Order">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-background/50 transition-colors group">
+<td class="px-6 py-4 font-mono text-gold">#LF-8919</td>
+<td class="px-6 py-4 font-medium">Sophia Chen</td>
+<td class="px-6 py-4 text-textMuted">Oct 23, 2023</td>
+<td class="px-6 py-4 font-semibold">$890.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-statusDelivered text-statusDeliveredText border border-statusDeliveredText/20">
+                                        Delivered
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-textMuted hover:text-gold transition-colors p-1" title="View Order">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-background/50 transition-colors group">
+<td class="px-6 py-4 font-mono text-gold">#LF-8918</td>
+<td class="px-6 py-4 font-medium">Jameson Wright</td>
+<td class="px-6 py-4 text-textMuted">Oct 22, 2023</td>
+<td class="px-6 py-4 font-semibold">$5,100.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-statusPending text-statusPendingText border border-gold/30">
+                                        Pending
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-textMuted hover:text-gold transition-colors p-1" title="View Order">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-background/50 transition-colors group">
+<td class="px-6 py-4 font-mono text-gold">#LF-8917</td>
+<td class="px-6 py-4 font-medium">Olivia Bennett</td>
+<td class="px-6 py-4 text-textMuted">Oct 22, 2023</td>
+<td class="px-6 py-4 font-semibold">$2,150.00</td>
+<td class="px-6 py-4">
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-statusDelivered text-statusDeliveredText border border-statusDeliveredText/20">
+                                        Delivered
+                                    </span>
+</td>
+<td class="px-6 py-4 text-right">
+<button class="text-textMuted hover:text-gold transition-colors p-1" title="View Order">
+<span class="material-symbols-outlined text-[20px]">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-6 py-4 border-t border-borderLight flex items-center justify-between bg-surface">
+<span class="text-xs text-textMuted font-label">Showing 1 to 5 of 24 results</span>
+<div class="flex items-center gap-1">
+<button class="p-1 rounded text-textMuted hover:text-gold disabled:opacity-50 disabled:hover:text-textMuted transition-colors" disabled="">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded flex items-center justify-center text-sm font-medium bg-gold text-black">1</button>
+<button class="w-8 h-8 rounded flex items-center justify-center text-sm font-medium text-textMuted hover:bg-borderLight hover:text-white transition-colors">2</button>
+<button class="w-8 h-8 rounded flex items-center justify-center text-sm font-medium text-textMuted hover:bg-borderLight hover:text-white transition-colors">3</button>
+<span class="text-textMuted px-1">...</span>
+<button class="w-8 h-8 rounded flex items-center justify-center text-sm font-medium text-textMuted hover:bg-borderLight hover:text-white transition-colors">5</button>
+<button class="p-1 rounded text-textMuted hover:text-gold transition-colors">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</body></html>

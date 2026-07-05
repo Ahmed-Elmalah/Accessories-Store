@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
 
 export default function DashboardLayout() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const isStaff = location.pathname.startsWith('/staff');
 
-  const navLinks = [
+  const adminLinks = [
     { 
       name: 'Dashboard', 
       path: '/admin', 
@@ -62,6 +64,20 @@ export default function DashboardLayout() {
     },
   ];
 
+  const staffLinks = [
+    { 
+      name: 'Orders', 
+      path: '/staff', 
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+        </svg>
+      ) 
+    }
+  ];
+
+  const currentLinks = isStaff ? staffLinks : adminLinks;
+
   const SidebarContent = ({ isMobile = false }) => (
     <>
       <div className={`mb-12 px-4 flex items-center gap-3 ${!isMobile ? 'justify-center lg:justify-start' : ''}`}>
@@ -77,11 +93,11 @@ export default function DashboardLayout() {
       </div>
 
       <div className="flex-1 space-y-2">
-        {navLinks.map((link, index) => (
+        {currentLinks.map((link, index) => (
           <NavLink
             key={index}
             to={link.path}
-            end={link.path === '/admin'}
+            end={link.path === '/admin' || link.path === '/staff'}
             onClick={() => isMobile && setIsMobileMenuOpen(false)}
             className={({ isActive }) => `flex items-center gap-4 px-4 py-3 rounded-lg font-display font-bold uppercase tracking-widest text-sm transition-colors duration-300 ${
               !isMobile ? 'justify-center lg:justify-start' : ''
@@ -100,13 +116,13 @@ export default function DashboardLayout() {
       <div className="mt-auto pt-6 border-t border-outline-variant px-2">
         <button className={`flex items-center gap-3 group w-full text-left ${!isMobile ? 'justify-center lg:justify-start' : ''}`}>
           <img
-            alt="Admin Profile"
+            alt={isStaff ? "Staff Profile" : "Admin Profile"}
             className="w-10 h-10 rounded-full object-cover border border-outline-variant group-hover:border-primary transition-colors shrink-0"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQfmoEKSVJ2c6TSh6jL4pwh5veaDuFdVDHahhYoPq-x5nWHcgNaX7Tz58BLu5b4x5rEKmJfF8Fuu4TI2XAWR43UB8Os4HfGgN35mwKwKnyngvGJt4jJwG2zs2vJqDw1_jGjA-McH7bLqF6A5WWj9cqgmjseB9ehRXgDIGew8tll7YPds6TrV2sDD-9ei9g7E_we4AHwYEdH1EE6wkEiRKI_fmGvOIMBTWpVuduXo8JSqiYoGZ0YIwknF7-DXUVy7Itd5juKVGze2cl"
           />
           <div className={!isMobile ? 'hidden lg:block' : ''}>
-            <p className="text-sm font-semibold text-on-surface group-hover:text-primary transition-colors">Admin User</p>
-            <p className="text-xs text-on-surface-variant">Superadmin</p>
+            <p className="text-sm font-semibold text-on-surface group-hover:text-primary transition-colors">{isStaff ? 'Staff User' : 'Admin User'}</p>
+            <p className="text-xs text-on-surface-variant">{isStaff ? 'Store Operations' : 'Superadmin'}</p>
           </div>
         </button>
       </div>
