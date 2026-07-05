@@ -10,6 +10,12 @@
   --color-on-surface-variant: #a3a3a3;
   --color-outline: #333333;
   --color-outline-variant: #222222;
+  
+  /* ألوان الحالات الإضافية للـ Badges */
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
+
   --font-sans: "Inter", sans-serif;
   --font-headline: "Public Sans", sans-serif;
   --font-display: "Public Sans", sans-serif;
@@ -48,4 +54,68 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+/* استايلات الجداول والـ Chart المخصصة */
+tbody tr {
+  transition: background-color 0.2s ease;
+}
+tbody tr:hover {
+  background-color: rgba(212, 175, 55, 0.05);
+}
+
+.chart-container {
+  position: relative;
+  height: 300px;
+  width: 100%;
+}
+.chart-grid-line {
+  stroke: var(--color-outline-variant);
+  stroke-width: 1;
+}
+.chart-line {
+  fill: none;
+  stroke: var(--color-primary);
+  stroke-width: 3;
+  filter: drop-shadow(0 4px 6px rgba(212, 175, 55, 0.2));
+}
+.chart-area {
+  fill: url(#chart-gradient);
+  opacity: 0.2;
+}
+.chart-point {
+  fill: var(--color-surface);
+  stroke: var(--color-primary);
+  stroke-width: 2;
+  transition: all 0.2s ease;
+}
+.chart-point:hover {
+  r: 6;
+  fill: var(--color-primary);
+}
+.chart-axis-text {
+  fill: var(--color-on-surface-variant);
+  font-size: 12px;
+  font-family: var(--font-body);
+}
+
+/* كلاسات الـ Badges الموحدة */
+.badge-pending {
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+  background-color: rgba(212, 175, 55, 0.1);
+}
+.badge-shipped {
+  border: 1px solid var(--color-outline);
+  color: var(--color-on-surface);
+  background-color: var(--color-surface-container);
+}
+.badge-urgent {
+  border: 1px solid var(--color-error);
+  color: var(--color-error);
+  background-color: rgba(248, 113, 113, 0.1);
+}
+.badge-success {
+  border: 1px solid var(--color-success);
+  color: var(--color-success);
+  background-color: rgba(52, 211, 153, 0.1);
 }
