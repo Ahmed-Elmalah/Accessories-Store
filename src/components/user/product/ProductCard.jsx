@@ -47,17 +47,17 @@ export default function ProductCard({ product, index = 0 }) {
           </div>
         )}
 
-        <button onClick={(e) => { e.preventDefault(); e.stopPropagation(); }} className="absolute top-3 right-3 text-neutral-400 hover:text-[#D4AF37] transition-colors z-20 bg-[#0a0a0a]/50 p-1.5 rounded-full backdrop-blur-sm focus:outline-none">
+        <button onClick={(e) => { e.preventDefault(); e.stopPropagation(); }} className="absolute top-3 right-3 text-neutral-400 hover:text-primary transition-colors z-20 bg-[#0a0a0a]/50 p-1.5 rounded-full backdrop-blur-sm focus:outline-none">
           <FiHeart className="text-lg" />
         </button>
       </Link>
 
       <div className="flex flex-col items-center text-center px-2">
         <span className="text-neutral-500 text-xs font-label uppercase tracking-widest mb-1">{product.category}</span>
-        <Link to={`/products/${product.id}`} className="text-lg font-headline text-white mb-2 hover:text-[#D4AF37] transition-colors line-clamp-1">
+        <Link to={`/products/${product.id}`} className="text-lg font-headline text-white mb-2 hover:text-primary transition-colors line-clamp-1">
           {product.name}
         </Link>
-        <p className={`${isOutOfStock ? 'text-neutral-500' : 'text-[#D4AF37]'} font-body font-light tracking-wide`}>${product.price}</p>
+        <p className={`${isOutOfStock ? 'text-neutral-500' : 'text-primary'} font-body font-light tracking-wide`}>${product.price}</p>
       </div>
     </article>
   );

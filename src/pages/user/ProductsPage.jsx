@@ -70,24 +70,24 @@ export default function ProductsPage() {
     : "The Collection";
 
   return (
-    <main className="flex-grow max-w-[90rem] mx-auto w-full px-6 py-12 md:py-16">
+    <main className="grow max-w-[90rem] mx-auto w-full px-6 py-12 md:py-16">
       {/* Page Header */}
       <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#D4AF37]/20 pb-6">
         <div>
           <nav aria-label="Breadcrumb" className="flex text-neutral-500 text-xs font-label uppercase tracking-widest mb-4">
             <ol className="inline-flex items-center space-x-1 md:space-x-2">
               <li className="inline-flex items-center">
-                <Link className="hover:text-[#D4AF37] transition-colors" to="/">Home</Link>
+                <Link className="hover:text-primary transition-colors" to="/">Home</Link>
               </li>
               <li>
                 <div className="flex items-center">
                   <FiChevronRight className="text-[14px] mx-1" />
-                  <span className="text-[#D4AF37]">{pageTitle}</span>
+                  <span className="text-primary">{pageTitle}</span>
                 </div>
               </li>
             </ol>
           </nav>
-          <h1 className="text-4xl md:text-5xl font-headline font-bold text-[#D4AF37] tracking-tight">{pageTitle}</h1>
+          <h1 className="text-4xl md:text-5xl font-headline font-bold text-primary tracking-tight">{pageTitle}</h1>
         </div>
       </div>
 
@@ -99,17 +99,17 @@ export default function ProductsPage() {
           <div className="flex flex-wrap items-center justify-between gap-6 mb-12 p-6 bg-[#111111] border border-[#D4AF37]/20 rounded-DEFAULT">
             <div className="flex flex-wrap items-center gap-8">
               <div className="relative group">
-                <button className="flex items-center gap-2 text-sm font-label text-neutral-300 hover:text-[#D4AF37] transition-colors uppercase tracking-widest">
+                <button className="flex items-center gap-2 text-sm font-label text-neutral-300 hover:text-primary transition-colors uppercase tracking-widest">
                   Categories <FiChevronDown className="text-lg" />
                 </button>
               </div>
               <div className="relative group">
-                <button className="flex items-center gap-2 text-sm font-label text-neutral-300 hover:text-[#D4AF37] transition-colors uppercase tracking-widest">
+                <button className="flex items-center gap-2 text-sm font-label text-neutral-300 hover:text-primary transition-colors uppercase tracking-widest">
                   Availability <FiChevronDown className="text-lg" />
                 </button>
               </div>
               <div className="relative group">
-                <button className="flex items-center gap-2 text-sm font-label text-neutral-300 hover:text-[#D4AF37] transition-colors uppercase tracking-widest">
+                <button className="flex items-center gap-2 text-sm font-label text-neutral-300 hover:text-primary transition-colors uppercase tracking-widest">
                   Sort By <FiChevronDown className="text-lg" />
                 </button>
               </div>
@@ -140,15 +140,15 @@ export default function ProductsPage() {
           {/* Pagination */}
           <div className="mt-16 flex justify-center">
             <nav className="flex items-center gap-2">
-              <button className="p-2 text-neutral-500 hover:text-[#D4AF37] transition-colors border border-transparent hover:border-[#D4AF37]/20 rounded-DEFAULT">
+              <button className="p-2 text-neutral-500 hover:text-primary transition-colors border border-transparent hover:border-[#D4AF37]/20 rounded-DEFAULT">
                 <FiChevronLeft className="text-[20px]" />
               </button>
               <button className="w-10 h-10 flex items-center justify-center bg-[#D4AF37] text-[#0a0a0a] font-label font-medium rounded-DEFAULT">1</button>
-              <button className="w-10 h-10 flex items-center justify-center text-neutral-400 hover:text-[#D4AF37] hover:bg-[#111111] border border-transparent hover:border-[#D4AF37]/20 transition-colors rounded-DEFAULT">2</button>
-              <button className="w-10 h-10 flex items-center justify-center text-neutral-400 hover:text-[#D4AF37] hover:bg-[#111111] border border-transparent hover:border-[#D4AF37]/20 transition-colors rounded-DEFAULT">3</button>
+              <button className="w-10 h-10 flex items-center justify-center text-neutral-400 hover:text-primary hover:bg-[#111111] border border-transparent hover:border-[#D4AF37]/20 transition-colors rounded-DEFAULT">2</button>
+              <button className="w-10 h-10 flex items-center justify-center text-neutral-400 hover:text-primary hover:bg-[#111111] border border-transparent hover:border-[#D4AF37]/20 transition-colors rounded-DEFAULT">3</button>
               <span className="text-neutral-600 px-1">...</span>
-              <button className="w-10 h-10 flex items-center justify-center text-neutral-400 hover:text-[#D4AF37] hover:bg-[#111111] border border-transparent hover:border-[#D4AF37]/20 transition-colors rounded-DEFAULT">8</button>
-              <button className="p-2 text-neutral-400 hover:text-[#D4AF37] transition-colors border border-transparent hover:border-[#D4AF37]/20 rounded-DEFAULT">
+              <button className="w-10 h-10 flex items-center justify-center text-neutral-400 hover:text-primary hover:bg-[#111111] border border-transparent hover:border-[#D4AF37]/20 transition-colors rounded-DEFAULT">8</button>
+              <button className="p-2 text-neutral-400 hover:text-primary transition-colors border border-transparent hover:border-[#D4AF37]/20 rounded-DEFAULT">
                 <FiChevronRight className="text-[20px]" />
               </button>
             </nav>

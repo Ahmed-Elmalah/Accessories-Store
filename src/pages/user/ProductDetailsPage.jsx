@@ -60,23 +60,23 @@ export default function ProductDetailsPage() {
   };
 
   return (
-    <main className="flex-grow w-full max-w-[90rem] mx-auto px-6 sm:px-12 py-12">
+    <main className="grow w-full max-w-[90rem] mx-auto px-6 sm:px-12 py-12">
       {/* Breadcrumb */}
       <nav aria-label="Breadcrumb" className="flex text-sm text-neutral-400 font-light mb-12 font-label">
         <ol className="inline-flex items-center space-x-1 md:space-x-3">
           <li className="inline-flex items-center">
-            <Link className="hover:text-[#D4AF37] transition-colors" to="/">Home</Link>
+            <Link className="hover:text-primary transition-colors" to="/">Home</Link>
           </li>
           <li>
             <div className="flex items-center">
               <FiChevronRight className="text-[16px] mx-1" />
-              <Link className="hover:text-[#D4AF37] transition-colors ml-1 md:ml-2" to="/products">Jewelry</Link>
+              <Link className="hover:text-primary transition-colors ml-1 md:ml-2" to="/products">Jewelry</Link>
             </div>
           </li>
           <li>
             <div className="flex items-center">
               <FiChevronRight className="text-[16px] mx-1" />
-              <span className="text-[#D4AF37] ml-1 md:ml-2">{product.name}</span>
+              <span className="text-primary ml-1 md:ml-2">{product.name}</span>
             </div>
           </li>
         </ol>
@@ -101,7 +101,7 @@ export default function ProductDetailsPage() {
         {/* Right Column: Details */}
         <div className="flex flex-col justify-start">
           <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl text-white mb-4 font-light tracking-wide">{product.name}</h1>
-          <p className="font-headline text-2xl text-[#D4AF37] mb-8">${product.price}</p>
+          <p className="font-headline text-2xl text-primary mb-8">${product.price}</p>
           <p className="font-body text-neutral-400 font-light leading-relaxed mb-10 text-lg">
             {product.description}
           </p>
@@ -110,11 +110,11 @@ export default function ProductDetailsPage() {
           <div className="mb-10">
             <div className="flex justify-between items-center mb-4">
               <h3 className="font-label text-sm uppercase tracking-widest text-white">Size</h3>
-              <a className="text-xs text-neutral-500 underline hover:text-[#D4AF37] transition-colors" href="#">Size Guide</a>
+              <a className="text-xs text-neutral-500 underline hover:text-primary transition-colors" href="#">Size Guide</a>
             </div>
             <div className="flex gap-3">
               {[5, 6, 7, 8, 9].map((size) => (
-                <button key={size} className={`w-12 h-12 rounded-full border ${size === 7 ? 'border-[#D4AF37] bg-[#D4AF37]/10 text-[#D4AF37]' : 'border-[#333333] hover:border-[#D4AF37] text-white'} transition-colors flex items-center justify-center font-light`}>
+                <button key={size} className={`w-12 h-12 rounded-full border ${size === 7 ? 'border-[#D4AF37] bg-[#D4AF37]/10 text-primary' : 'border-[#333333] hover:border-[#D4AF37] text-white'} transition-colors flex items-center justify-center font-light`}>
                   {size}
                 </button>
               ))}
@@ -126,18 +126,18 @@ export default function ProductDetailsPage() {
             <div className="flex items-center border border-[#333333] h-14 w-full sm:w-32">
               <button 
                 onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                className="px-4 text-neutral-400 hover:text-[#D4AF37] transition-colors focus:outline-none h-full"><FiMinus /></button>
-              <span className="flex-grow text-center font-light text-white">{quantity}</span>
+                className="px-4 text-neutral-400 hover:text-primary transition-colors focus:outline-none h-full"><FiMinus /></button>
+              <span className="grow text-center font-light text-white">{quantity}</span>
               <button 
                 onClick={() => setQuantity(quantity + 1)}
-                className="px-4 text-neutral-400 hover:text-[#D4AF37] transition-colors focus:outline-none h-full"><FiPlus /></button>
+                className="px-4 text-neutral-400 hover:text-primary transition-colors focus:outline-none h-full"><FiPlus /></button>
             </div>
             <button 
               onClick={handleAddToCart}
-              className="flex-grow bg-[#D4AF37] text-[#0a0a0a] h-14 font-label uppercase tracking-widest text-sm hover:bg-white transition-colors duration-300 font-bold">
+              className="grow bg-[#D4AF37] text-[#0a0a0a] h-14 font-label uppercase tracking-widest text-sm hover:bg-white transition-colors duration-300 font-bold">
               Add to Cart
             </button>
-            <button className="h-14 w-14 border border-[#333333] flex items-center justify-center text-neutral-400 hover:text-[#D4AF37] hover:border-[#D4AF37] transition-colors focus:outline-none">
+            <button className="h-14 w-14 border border-[#333333] flex items-center justify-center text-neutral-400 hover:text-primary hover:border-[#D4AF37] transition-colors focus:outline-none">
               <FiHeart className="text-xl" />
             </button>
           </div>

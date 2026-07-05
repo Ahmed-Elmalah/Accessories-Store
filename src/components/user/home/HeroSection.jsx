@@ -19,7 +19,7 @@ export default function HeroSection() {
         <div className="max-w-2xl">
           <h1 className="text-6xl md:text-8xl lg:text-9xl font-editorial text-white mb-6 leading-[1.1] tracking-tight animate-fade-in-up">
             Elegance <br />
-            <span className="text-[#D4AF37] italic font-light">in Detail</span>
+            <span className="text-primary italic font-light">in Detail</span>
           </h1>
           <p className="text-lg md:text-xl text-neutral-300 font-body mb-10 max-w-md font-light leading-relaxed animate-fade-in-up animation-delay-200">
             Discover our curated collection of premium jewelry, designed for those who appreciate the finer things.
@@ -31,7 +31,7 @@ export default function HeroSection() {
             >
               Shop Collection
             </Link>
-            <span className="text-[#D4AF37]/60 text-sm font-label tracking-[0.2em] uppercase hidden sm:block">
+            <span className="text-primary/60 text-sm font-label tracking-[0.2em] uppercase hidden sm:block">
               Est. 2024
             </span>
           </div>

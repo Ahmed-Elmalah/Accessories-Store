@@ -4,10 +4,10 @@ import { FiCheck, FiTruck, FiBox, FiMessageCircle } from "react-icons/fi";
 
 export default function OrderTrackingPage() {
   return (
-    <div className="py-12 md:py-16 px-6 md:px-12 max-w-5xl mx-auto flex-grow w-full">
+    <div className="py-12 md:py-16 px-6 md:px-12 max-w-5xl mx-auto grow w-full">
       {/* Page Header */}
       <section className="text-center mb-16">
-        <h1 className="text-5xl md:text-6xl font-headline text-[#D4AF37] mb-4 italic font-light">Track Your Order</h1>
+        <h1 className="text-5xl md:text-6xl font-headline text-primary mb-4 italic font-light">Track Your Order</h1>
         <p className="text-neutral-400 font-body max-w-xl mx-auto">Enter your credentials below to see the real-time status of your bespoke luxury accessory.</p>
       </section>
 
@@ -49,7 +49,7 @@ export default function OrderTrackingPage() {
               <FiCheck className="text-[#0a0a0a] font-bold text-xl" />
             </div>
             <div className="space-y-1">
-              <p className="font-label font-bold text-[#D4AF37] text-sm uppercase tracking-tighter">Order Received</p>
+              <p className="font-label font-bold text-primary text-sm uppercase tracking-tighter">Order Received</p>
               <p className="text-xs text-neutral-400">Nov 12, 10:45 AM</p>
             </div>
           </div>
@@ -60,7 +60,7 @@ export default function OrderTrackingPage() {
               <FiCheck className="text-[#0a0a0a] font-bold text-xl" />
             </div>
             <div className="space-y-1">
-              <p className="font-label font-bold text-[#D4AF37] text-sm uppercase tracking-tighter">In Preparation</p>
+              <p className="font-label font-bold text-primary text-sm uppercase tracking-tighter">In Preparation</p>
               <p className="text-xs text-neutral-400">Nov 13, 02:20 PM</p>
             </div>
           </div>
@@ -72,7 +72,7 @@ export default function OrderTrackingPage() {
               <div className="absolute -inset-2 rounded-full border border-[#D4AF37]/30 animate-ping"></div>
             </div>
             <div className="space-y-1">
-              <p className="font-label font-bold text-[#D4AF37] text-sm uppercase tracking-tighter">Shipped</p>
+              <p className="font-label font-bold text-primary text-sm uppercase tracking-tighter">Shipped</p>
               <p className="text-xs text-white">Estimated: Nov 16</p>
             </div>
           </div>
@@ -97,7 +97,7 @@ export default function OrderTrackingPage() {
             <h2 className="text-2xl font-headline italic text-white font-light">Order Details</h2>
             <div className="text-right mt-4 md:mt-0">
               <p className="text-neutral-400 font-label text-xs uppercase tracking-widest mb-1">ID: #LF-890214</p>
-              <p className="text-[#D4AF37] font-headline font-bold">In Transit</p>
+              <p className="text-primary font-headline font-bold">In Transit</p>
             </div>
           </div>
           
@@ -112,7 +112,7 @@ export default function OrderTrackingPage() {
                 <p className="text-neutral-400 text-sm mt-1">Size: 7 • 18k Yellow Gold</p>
               </div>
               <div className="text-right">
-                <p className="font-headline font-bold text-[#D4AF37]">$1,250</p>
+                <p className="font-headline font-bold text-primary">$1,250</p>
               </div>
             </div>
             
@@ -125,7 +125,7 @@ export default function OrderTrackingPage() {
                 <p className="text-neutral-400 text-sm mt-1">Length: 18" • Solid Links</p>
               </div>
               <div className="text-right">
-                <p className="font-headline font-bold text-[#D4AF37]">$2,100</p>
+                <p className="font-headline font-bold text-primary">$2,100</p>
               </div>
             </div>
           </div>
@@ -158,7 +158,7 @@ export default function OrderTrackingPage() {
       {/* Support Section */}
       <section className="flex flex-col items-center gap-6">
         <p className="text-neutral-400 font-body">Expected delivery within 3-5 business days.</p>
-        <button className="group flex items-center gap-3 border border-[#D4AF37] px-8 py-4 text-[#D4AF37] font-label font-bold uppercase tracking-widest hover:bg-[#D4AF37] hover:text-[#0a0a0a] transition-all duration-300 rounded">
+        <button className="group flex items-center gap-3 border border-[#D4AF37] px-8 py-4 text-primary font-label font-bold uppercase tracking-widest hover:bg-[#D4AF37] hover:text-[#0a0a0a] transition-all duration-300 rounded">
           <FiMessageCircle className="group-hover:scale-110 transition-transform text-xl" />
           Need Help? Contact us
         </button>

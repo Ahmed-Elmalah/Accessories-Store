@@ -18,7 +18,7 @@ export default function CheckoutPage() {
   };
 
   return (
-    <main className="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
+    <main className="grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
         
         {/* Left Column: Forms */}
@@ -81,7 +81,7 @@ export default function CheckoutPage() {
                     checked={paymentMethod === 'cod'}
                     onChange={() => setPaymentMethod('cod')}
                   />
-                  <span className={`material-symbols-outlined text-3xl transition-transform ${paymentMethod === 'cod' ? 'text-[#D4AF37]' : 'text-neutral-500 group-hover:text-[#D4AF37]'}`}>local_shipping</span>
+                  <span className={`material-symbols-outlined text-3xl transition-transform ${paymentMethod === 'cod' ? 'text-primary' : 'text-neutral-500 group-hover:text-primary'}`}>local_shipping</span>
                   <span className={`font-label font-medium text-sm tracking-wide transition-colors ${paymentMethod === 'cod' ? 'text-white' : 'text-neutral-400 group-hover:text-white'}`}>Cash on Delivery</span>
                 </label>
 
@@ -94,7 +94,7 @@ export default function CheckoutPage() {
                     checked={paymentMethod === 'instapay'}
                     onChange={() => setPaymentMethod('instapay')}
                   />
-                  <span className={`material-symbols-outlined text-3xl transition-transform ${paymentMethod === 'instapay' ? 'text-[#D4AF37]' : 'text-neutral-500 group-hover:text-[#D4AF37]'}`}>account_balance</span>
+                  <span className={`material-symbols-outlined text-3xl transition-transform ${paymentMethod === 'instapay' ? 'text-primary' : 'text-neutral-500 group-hover:text-primary'}`}>account_balance</span>
                   <span className={`font-label font-medium text-sm tracking-wide transition-colors ${paymentMethod === 'instapay' ? 'text-white' : 'text-neutral-400 group-hover:text-white'}`}>Instapay</span>
                 </label>
 
@@ -103,7 +103,7 @@ export default function CheckoutPage() {
               {/* Dynamic Fields */}
               {paymentMethod === 'instapay' && (
                 <div className="space-y-6 bg-[#111111] p-6 rounded-lg border border-[#333] animate-fade-in">
-                  <p className="text-sm text-neutral-400 mb-4">Please transfer the total amount to <strong className="text-[#D4AF37] font-medium">010 1234 5678</strong> and provide the transaction details below.</p>
+                  <p className="text-sm text-neutral-400 mb-4">Please transfer the total amount to <strong className="text-primary font-medium">010 1234 5678</strong> and provide the transaction details below.</p>
                   <div className="space-y-2">
                     <label className="block font-label text-sm text-neutral-400 uppercase tracking-wider" htmlFor="transactionId">Transaction Number</label>
                     <input required className="w-full bg-[#1a1a1a] border border-[#333333] text-white focus:border-[#D4AF37] focus:ring-1 focus:ring-[#D4AF37] rounded-DEFAULT p-3 outline-none transition-colors" id="transactionId" placeholder="e.g. 123456789" type="text" />
@@ -129,10 +129,10 @@ export default function CheckoutPage() {
                     <div className="w-16 h-16 bg-[#1a1a1a] rounded-md overflow-hidden flex-shrink-0">
                       <img className="w-full h-full object-cover" alt={item.name} src={item.image} />
                     </div>
-                    <div className="flex-grow">
+                    <div className="grow">
                       <h3 className="font-label font-medium text-white text-sm">{item.name}</h3>
                       <p className="text-neutral-400 text-xs mt-1">Qty: {item.quantity}</p>
-                      <p className="text-[#D4AF37] font-headline mt-2 font-semibold tracking-wide">${(item.price * item.quantity).toFixed(2)}</p>
+                      <p className="text-primary font-headline mt-2 font-semibold tracking-wide">${(item.price * item.quantity).toFixed(2)}</p>
                     </div>
                   </div>
                 ))
@@ -151,7 +151,7 @@ export default function CheckoutPage() {
               </div>
               <div className="flex justify-between items-center text-lg mt-4">
                 <span className="font-semibold text-white">Total</span>
-                <span className="font-headline text-2xl text-[#D4AF37] font-bold">${totalAmount.toFixed(2)}</span>
+                <span className="font-headline text-2xl text-primary font-bold">${totalAmount.toFixed(2)}</span>
               </div>
             </div>
             
