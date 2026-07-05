@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { FiUser, FiPackage, FiHeart, FiLogOut, FiTruck } from "react-icons/fi";
 import { MdWorkspacePremium, MdBadge } from "react-icons/md";
 import toast from "react-hot-toast";
+
+export default function ProfilePage() {
 import useLogin from "../../auth/useLogin";
 
 export default function ProfilePage() {
@@ -44,10 +46,7 @@ export default function ProfilePage() {
               <FiHeart className="text-lg" />
               Wishlist
             </Link>
-            <button 
-              onClick={() => logOut()}
-              className="py-4 text-sm font-label uppercase tracking-widest text-neutral-400 hover:text-red-500 transition-colors whitespace-nowrap flex items-center gap-2 ml-auto"
-            >
+            <button className="py-4 text-sm font-label uppercase tracking-widest text-neutral-400 hover:text-[#D4AF37] transition-colors whitespace-nowrap flex items-center gap-2 ml-auto">
               <FiLogOut className="text-lg" />
               Logout
             </button>
