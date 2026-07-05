@@ -21,8 +21,8 @@ export default function Navbar() {
       : currentPath === path && !currentCategory;
 
     return isActive
-      ? "text-[#D4AF37] border-b border-[#D4AF37] pb-1 text-sm uppercase tracking-widest"
-      : "text-neutral-400 hover:text-[#D4AF37] transition-colors text-sm uppercase tracking-widest";
+      ? "text-primary border-b border-[#D4AF37] pb-1 text-sm uppercase tracking-widest"
+      : "text-neutral-400 hover:text-primary transition-colors text-sm uppercase tracking-widest";
   };
 
   const getMobileLinkClasses = (path, category = null) => {
@@ -31,8 +31,8 @@ export default function Navbar() {
       : currentPath === path && !currentCategory;
 
     return isActive
-      ? "text-[#D4AF37] border-l-2 border-[#D4AF37] pl-4 py-2 text-sm uppercase tracking-widest bg-[#D4AF37]/10"
-      : "text-neutral-400 hover:text-[#D4AF37] hover:bg-[#1a1a1a] transition-all pl-4 py-2 text-sm uppercase tracking-widest";
+      ? "text-primary border-l-2 border-[#D4AF37] pl-4 py-2 text-sm uppercase tracking-widest bg-[#D4AF37]/10"
+      : "text-neutral-400 hover:text-primary hover:bg-[#1a1a1a] transition-all pl-4 py-2 text-sm uppercase tracking-widest";
   };
 
   return (
@@ -41,7 +41,7 @@ export default function Navbar() {
         {/* Brand Logo */}
         <div className="flex-shrink-0 flex items-center z-10">
           <Link
-            className="flex items-center gap-2 text-2xl font-headline font-bold text-[#D4AF37] tracking-widest hover:text-white transition-colors"
+            className="flex items-center gap-2 text-2xl font-headline font-bold text-primary tracking-widest hover:text-white transition-colors"
             to="/"
           >
             <FiFeather className="text-3xl" />
@@ -94,15 +94,15 @@ export default function Navbar() {
           <div className="flex items-center space-x-4 sm:space-x-6 text-neutral-400">
             <button 
               onClick={() => setIsSearchOpen(true)}
-              className="hover:text-[#D4AF37] transition-colors focus:outline-none"
+              className="hover:text-primary transition-colors focus:outline-none"
             >
               <FiSearch className="text-xl" />
             </button>
-            <Link to="/wishlist" className={`${currentPath === '/wishlist' ? 'text-[#D4AF37]' : 'text-neutral-400 hover:text-[#D4AF37]'} transition-colors focus:outline-none`}>
+            <Link to="/wishlist" className={`${currentPath === '/wishlist' ? 'text-primary' : 'text-neutral-400 hover:text-primary'} transition-colors focus:outline-none`}>
               <FiHeart className="text-xl" />
             </Link>
             <button
-              className="hover:text-[#D4AF37] transition-colors focus:outline-none relative"
+              className="hover:text-primary transition-colors focus:outline-none relative"
               onClick={toggleCart}
             >
               <FiShoppingBag className="text-xl" />
@@ -116,14 +116,14 @@ export default function Navbar() {
           {user ? (
             <Link
               to="/profile"
-              className="hidden lg:flex items-center gap-2 text-neutral-400 hover:text-[#D4AF37] transition-colors text-sm uppercase tracking-widest"
+              className="hidden lg:flex items-center gap-2 text-neutral-400 hover:text-primary transition-colors text-sm uppercase tracking-widest"
             >
               <FiUser className="text-xl" />
               <span>{user.username}</span>
             </Link>
           ) : (
             <Link
-              className="hidden lg:inline-flex text-neutral-400 hover:text-[#D4AF37] transition-colors text-sm uppercase tracking-widest"
+              className="hidden lg:inline-flex text-neutral-400 hover:text-primary transition-colors text-sm uppercase tracking-widest"
               to="/login"
               state={{ from: location }}
             >
@@ -134,7 +134,7 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <div className="-mr-2 flex items-center lg:hidden">
             <button
-              className="inline-flex items-center justify-center p-2 text-neutral-400 hover:text-[#D4AF37] focus:outline-none"
+              className="inline-flex items-center justify-center p-2 text-neutral-400 hover:text-primary focus:outline-none"
               type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
@@ -163,12 +163,12 @@ export default function Navbar() {
           <hr className="border-[#333] my-6" />
           
           {user ? (
-            <Link to="/profile" onClick={() => setIsMobileMenuOpen(false)} className="text-neutral-400 hover:text-[#D4AF37] transition-colors text-sm uppercase tracking-widest flex items-center gap-3 pl-4 py-2">
+            <Link to="/profile" onClick={() => setIsMobileMenuOpen(false)} className="text-neutral-400 hover:text-primary transition-colors text-sm uppercase tracking-widest flex items-center gap-3 pl-4 py-2">
               <FiUser className="text-xl" />
               <span>My Profile ({user.username})</span>
             </Link>
           ) : (
-            <Link to="/login" state={{ from: location }} onClick={() => setIsMobileMenuOpen(false)} className="text-neutral-400 hover:text-[#D4AF37] transition-colors text-sm uppercase tracking-widest flex items-center gap-3 pl-4 py-2">
+            <Link to="/login" state={{ from: location }} onClick={() => setIsMobileMenuOpen(false)} className="text-neutral-400 hover:text-primary transition-colors text-sm uppercase tracking-widest flex items-center gap-3 pl-4 py-2">
               <FiUser className="text-xl" />
               <span>Login / Register</span>
             </Link>
@@ -190,7 +190,7 @@ export default function Navbar() {
               autoFocus={isSearchOpen}
               className="w-full border border-neutral-800 bg-[#0a0a0a] text-white font-body px-6 py-4 outline-none focus:border-[#D4AF37] transition-colors rounded-none pr-12 placeholder-neutral-600"
             />
-            <button className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-500 hover:text-[#D4AF37] transition-colors">
+            <button className="absolute right-4 top-1/2 -translate-y-1/2 text-neutral-500 hover:text-primary transition-colors">
               <FiSearch className="text-xl" />
             </button>
           </div>

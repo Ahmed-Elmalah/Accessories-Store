@@ -36,7 +36,7 @@ export default function CartDrawer() {
           </h2>
           <button
             onClick={closeCart}
-            className="text-neutral-400 hover:text-[#D4AF37] transition-colors focus:outline-none p-2"
+            className="text-neutral-400 hover:text-primary transition-colors focus:outline-none p-2"
           >
             <FiX className="text-2xl" />
           </button>
@@ -52,7 +52,7 @@ export default function CartDrawer() {
               <p className="font-body text-sm">Your cart is empty.</p>
               <button
                 onClick={closeCart}
-                className="mt-4 px-8 py-3 border border-[#D4AF37]/50 text-[#D4AF37] font-label text-xs uppercase tracking-widest hover:bg-[#D4AF37] hover:text-[#0a0a0a] transition-all"
+                className="mt-4 px-8 py-3 border border-[#D4AF37]/50 text-primary font-label text-xs uppercase tracking-widest hover:bg-[#D4AF37] hover:text-[#0a0a0a] transition-all"
               >
                 Continue Shopping
               </button>
@@ -91,7 +91,7 @@ export default function CartDrawer() {
                     <div className="flex items-center border border-[#D4AF37]/20 rounded-sm">
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                        className="px-2 py-1 text-neutral-400 hover:text-[#D4AF37] transition-colors"
+                        className="px-2 py-1 text-neutral-400 hover:text-primary transition-colors"
                         disabled={item.quantity <= 1}
                       >
                         <FiMinus />
@@ -101,12 +101,12 @@ export default function CartDrawer() {
                       </span>
                       <button
                         onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                        className="px-2 py-1 text-neutral-400 hover:text-[#D4AF37] transition-colors"
+                        className="px-2 py-1 text-neutral-400 hover:text-primary transition-colors"
                       >
                         <FiPlus />
                       </button>
                     </div>
-                    <span className="text-[#D4AF37] font-headline text-base italic">
+                    <span className="text-primary font-headline text-base italic">
                       ${(item.price * item.quantity).toFixed(2)}
                     </span>
                   </div>

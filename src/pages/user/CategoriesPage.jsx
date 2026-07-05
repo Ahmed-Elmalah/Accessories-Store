@@ -37,24 +37,24 @@ export default function CategoriesPage() {
   ];
 
   return (
-    <main className="flex-grow max-w-[90rem] mx-auto w-full px-6 py-12 md:py-16">
+    <main className="grow max-w-[90rem] mx-auto w-full px-6 py-12 md:py-16">
       {/* Page Header */}
       <div className="mb-12 border-b border-[#D4AF37]/10 pb-8 animate-fade-in-up">
         <div className="flex flex-col gap-4">
           <nav aria-label="Breadcrumb">
             <ol className="flex items-center space-x-2 text-xs font-label uppercase tracking-widest text-neutral-500">
               <li>
-                <Link className="hover:text-[#D4AF37] transition-colors" to="/">Home</Link>
+                <Link className="hover:text-primary transition-colors" to="/">Home</Link>
               </li>
               <li>
                 <div className="flex items-center">
                   <FiChevronRight className="text-[14px] mx-1" />
-                  <span className="text-[#D4AF37]">Categories</span>
+                  <span className="text-primary">Categories</span>
                 </div>
               </li>
             </ol>
           </nav>
-          <h1 className="text-4xl md:text-5xl font-headline font-bold text-[#D4AF37] tracking-tight">Shop by Category</h1>
+          <h1 className="text-4xl md:text-5xl font-headline font-bold text-primary tracking-tight">Shop by Category</h1>
         </div>
       </div>
 
@@ -76,7 +76,7 @@ export default function CategoriesPage() {
             <div className="flex justify-between items-start">
               <div>
                 <Link to={cat.link}>
-                  <h4 className="text-white font-headline text-2xl mb-1 hover:text-[#D4AF37] transition-colors">
+                  <h4 className="text-white font-headline text-2xl mb-1 hover:text-primary transition-colors">
                     {cat.title}
                   </h4>
                 </Link>

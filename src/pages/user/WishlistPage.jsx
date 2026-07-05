@@ -44,7 +44,7 @@ export default function WishlistPage() {
   };
 
   return (
-    <main className="max-w-[1440px] mx-auto px-6 md:px-12 py-16 flex-grow">
+    <main className="max-w-360 mx-auto px-6 md:px-12 py-16 grow">
       {/* Header Section */}
       <div className="text-center mb-16">
         <h1 className="font-headline text-5xl md:text-6xl text-white mb-4 italic">Your Wishlist</h1>
@@ -55,7 +55,7 @@ export default function WishlistPage() {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8 sm:gap-x-8 sm:gap-y-12 xl:grid-cols-5">
         {wishlistItems.map((item, index) => (
           <div key={item.id} className={`group relative flex flex-col animate-fade-in-up animation-delay-${Math.min(index * 100, 500)}`}>
-            <Link to={`/products/${item.id}`} className="relative aspect-[3/4] overflow-hidden bg-surface-container mb-6 border border-[#222] block">
+            <Link to={`/products/${item.id}`} className="relative aspect-3/4 overflow-hidden bg-surface-container mb-6 border border-[#222] block">
               <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" alt={item.name} src={item.image} />
               <button 
                 onClick={(e) => {
@@ -64,21 +64,21 @@ export default function WishlistPage() {
                   // Remove from wishlist logic would go here
                   toast("Removed from wishlist", { icon: "🗑️" });
                 }}
-                className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-[#0a0a0a]/50 backdrop-blur-md rounded-full text-white hover:bg-red-500 hover:text-white transition-all">
+                className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-surface/50 backdrop-blur-md rounded-full text-white hover:bg-red-500 hover:text-white transition-all">
                 <FiX className="text-sm" />
               </button>
             </Link>
             
-            <div className="flex flex-col flex-grow">
+            <div className="flex flex-col grow">
               <Link to={`/products/${item.id}`}>
-                <h3 className="font-headline text-xl text-white mb-1 hover:text-[#D4AF37] transition-colors">{item.name}</h3>
+                <h3 className="font-headline text-xl text-white mb-1 hover:text-primary transition-colors">{item.name}</h3>
               </Link>
               <p className="font-body text-sm text-neutral-400 mb-3">{item.description}</p>
-              <p className="font-headline text-lg text-[#D4AF37] font-bold mb-6">${item.price}</p>
+              <p className="font-headline text-lg text-primary font-bold mb-6">${item.price}</p>
               
               <button 
                 onClick={() => handleAddToCart(item)}
-                className="w-full py-4 bg-[#D4AF37] text-[#0a0a0a] font-label text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-white transition-colors duration-300 mt-auto shadow-[0_0_15px_rgba(212,175,55,0.0)] hover:shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+                className="w-full py-4 bg-primary text-surface font-label text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-white transition-colors duration-300 mt-auto shadow-[0_0_15px_rgba(212,175,55,0.0)] hover:shadow-[0_0_15px_rgba(212,175,55,0.2)]">
                 Add to Cart
               </button>
             </div>
@@ -88,10 +88,10 @@ export default function WishlistPage() {
 
       {/* Bottom Link */}
       <div className="mt-24 text-center">
-        <Link to="/products" className="group inline-flex items-center gap-2 text-neutral-400 hover:text-[#D4AF37] transition-all duration-300 font-label text-xs uppercase tracking-widest relative">
+        <Link to="/products" className="group inline-flex items-center gap-2 text-neutral-400 hover:text-primary transition-all duration-300 font-label text-xs uppercase tracking-widest relative">
           <FiArrowLeft className="text-sm" />
           <span>Continue Shopping</span>
-          <span className="block h-[1px] w-0 bg-[#D4AF37] group-hover:w-full transition-all duration-500 absolute -bottom-1"></span>
+          <span className="block h-px w-0 bg-primary group-hover:w-full transition-all duration-500 absolute -bottom-1"></span>
         </Link>
       </div>
     </main>

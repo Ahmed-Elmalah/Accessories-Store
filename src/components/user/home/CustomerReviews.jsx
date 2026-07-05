@@ -40,7 +40,7 @@ export default function CustomerReviews() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {reviews.map((review, i) => (
           <FadeIn key={i} delay={Math.min(i * 200, 600)} className="bg-neutral-900/20 p-8 border border-[#D4AF37]/10 flex flex-col items-center text-center">
-            <div className="flex gap-1 text-[#D4AF37] mb-8">
+            <div className="flex gap-1 text-primary mb-8">
               {[...Array(review.rating)].map((_, i) => (
                 <FaStar key={i} className="text-sm" />
               ))}

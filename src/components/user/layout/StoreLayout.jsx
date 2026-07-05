@@ -10,7 +10,7 @@ export default function StoreLayout() {
     <div className="bg-[#0a0a0a] text-neutral-200 font-body antialiased min-h-screen flex flex-col overflow-x-hidden">
       <PromoBanner />
       <Navbar />
-      <main className="flex-grow">
+      <main className="grow">
         <Outlet />
       </main>
       <Footer />
