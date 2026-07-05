@@ -6,6 +6,7 @@ import { useAuthStore } from "../../../auth/authStore";
 
 export default function Navbar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const toggleCart = useCartStore((state) => state.toggleCart);
   const itemCount = useCartStore((state) => state.getItemCount());
   const user = useAuthStore((state) => state.user);
@@ -24,6 +25,16 @@ export default function Navbar() {
       : "text-neutral-400 hover:text-[#D4AF37] transition-colors text-sm uppercase tracking-widest";
   };
 
+  const getMobileLinkClasses = (path, category = null) => {
+    const isActive = category 
+      ? currentPath === path && currentCategory === category 
+      : currentPath === path && !currentCategory;
+
+    return isActive
+      ? "text-[#D4AF37] border-l-2 border-[#D4AF37] pl-4 py-2 text-sm uppercase tracking-widest bg-[#D4AF37]/10"
+      : "text-neutral-400 hover:text-[#D4AF37] hover:bg-[#1a1a1a] transition-all pl-4 py-2 text-sm uppercase tracking-widest";
+  };
+
   return (
     <nav className="bg-[#0a0a0a]/90 backdrop-blur-md border-b border-[#D4AF37]/10 w-full sticky top-0 z-40 transition-all duration-300 ease-in-out font-label font-medium tracking-wider flex flex-col relative">
       <div className="max-w-[90rem] mx-auto px-6 sm:px-12 w-full flex justify-between items-center h-24">
@@ -39,7 +50,7 @@ export default function Navbar() {
         </div>
 
         {/* Navigation Links (Web) */}
-        <div className="hidden md:flex space-x-12 items-center h-full absolute left-1/2 -translate-x-1/2">
+        <div className="hidden lg:flex xl:space-x-12 space-x-6 items-center h-full absolute left-1/2 -translate-x-1/2">
           <Link
             className={getLinkClasses("/")}
             to="/"
@@ -79,8 +90,8 @@ export default function Navbar() {
         </div>
 
         {/* Trailing Actions */}
-        <div className="flex items-center space-x-6 z-10">
-          <div className="hidden sm:flex items-center space-x-6 text-neutral-400">
+        <div className="flex items-center space-x-4 sm:space-x-6 z-10">
+          <div className="flex items-center space-x-4 sm:space-x-6 text-neutral-400">
             <button 
               onClick={() => setIsSearchOpen(true)}
               className="hover:text-[#D4AF37] transition-colors focus:outline-none"
@@ -121,15 +132,47 @@ export default function Navbar() {
           )}
 
           {/* Mobile menu button */}
-          <div className="-mr-2 flex items-center md:hidden">
+          <div className="-mr-2 flex items-center lg:hidden">
             <button
               className="inline-flex items-center justify-center p-2 text-neutral-400 hover:text-[#D4AF37] focus:outline-none"
               type="button"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               <span className="sr-only">Open main menu</span>
-              <FiMenu className="text-2xl" />
+              {isMobileMenuOpen ? <FiX className="text-2xl" /> : <FiMenu className="text-2xl" />}
             </button>
           </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <div 
+        className={`absolute left-0 right-0 bg-[#0a0a0a]/95 backdrop-blur-md border-b border-[#D4AF37]/20 z-30 lg:hidden flex flex-col transition-all duration-300 ease-in-out ${
+          isMobileMenuOpen ? "translate-y-0 opacity-100 visible" : "-translate-y-4 opacity-0 invisible"
+        }`}
+        style={{ top: "96px" }}
+      >
+        <div className="flex flex-col p-6 space-y-2">
+          <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className={getMobileLinkClasses("/")}>Home</Link>
+          <Link to="/products?category=necklaces" onClick={() => setIsMobileMenuOpen(false)} className={getMobileLinkClasses("/products", "necklaces")}>Necklaces</Link>
+          <Link to="/products?category=bracelets" onClick={() => setIsMobileMenuOpen(false)} className={getMobileLinkClasses("/products", "bracelets")}>Bracelets</Link>
+          <Link to="/products?category=rings" onClick={() => setIsMobileMenuOpen(false)} className={getMobileLinkClasses("/products", "rings")}>Rings</Link>
+          <Link to="/products?category=earrings" onClick={() => setIsMobileMenuOpen(false)} className={getMobileLinkClasses("/products", "earrings")}>Earrings</Link>
+          <Link to="/products?category=bundles" onClick={() => setIsMobileMenuOpen(false)} className={getMobileLinkClasses("/products", "bundles")}>Bundles</Link>
+          
+          <hr className="border-[#333] my-6" />
+          
+          {user ? (
+            <Link to="/profile" onClick={() => setIsMobileMenuOpen(false)} className="text-neutral-400 hover:text-[#D4AF37] transition-colors text-sm uppercase tracking-widest flex items-center gap-3 pl-4 py-2">
+              <FiUser className="text-xl" />
+              <span>My Profile ({user.username})</span>
+            </Link>
+          ) : (
+            <Link to="/login" state={{ from: location }} onClick={() => setIsMobileMenuOpen(false)} className="text-neutral-400 hover:text-[#D4AF37] transition-colors text-sm uppercase tracking-widest flex items-center gap-3 pl-4 py-2">
+              <FiUser className="text-xl" />
+              <span>Login / Register</span>
+            </Link>
+          )}
         </div>
       </div>
 

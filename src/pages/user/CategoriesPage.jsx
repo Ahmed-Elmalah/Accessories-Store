@@ -58,7 +58,7 @@ export default function CategoriesPage() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-8">
         {collections.map((cat, i) => (
           <div key={i} className={`group flex flex-col animate-fade-in-up animation-delay-${Math.min(i * 100, 500)}`}>
             <Link to={cat.link} className="block relative aspect-[4/5] overflow-hidden mb-4 bg-neutral-900/30 border border-[#D4AF37]/5">

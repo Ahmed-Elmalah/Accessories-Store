@@ -4,7 +4,7 @@ import { FiCheck, FiTruck, FiBox, FiMessageCircle } from "react-icons/fi";
 
 export default function OrderTrackingPage() {
   return (
-    <main className="pt-24 pb-24 px-6 md:px-12 max-w-5xl mx-auto flex-grow w-full">
+    <div className="py-12 md:py-16 px-6 md:px-12 max-w-5xl mx-auto flex-grow w-full">
       {/* Page Header */}
       <section className="text-center mb-16">
         <h1 className="text-5xl md:text-6xl font-headline text-[#D4AF37] mb-4 italic font-light">Track Your Order</h1>
@@ -163,6 +163,6 @@ export default function OrderTrackingPage() {
           Need Help? Contact us
         </button>
       </section>
-    </main>
+    </div>
   );
 }

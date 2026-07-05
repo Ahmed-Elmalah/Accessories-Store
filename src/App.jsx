@@ -22,7 +22,7 @@ import SignupPage from "./pages/auth/SignupPage";
 import StaffDashboardPage from "./pages/staff/StaffDashboardPage";
 import Products from "./pages/admin/Products";
 import OrdersPage from "./pages/admin/Orders";
-import AdminDashboard from "./pages/admin/AdminDashboardPage";
+import AdminDashboard from "./pages/admin/AdminDashboard";
 
 function App() {
   return (
@@ -39,60 +39,82 @@ function App() {
         }}
       />
       <Routes>
-      {/* Public Store Routes */}
-      <Route element={<StoreLayout />}>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/categories" element={<CategoriesPage />} />
-        <Route path="/products" element={<ProductsPage />} />
-        <Route path="/products/:id" element={<ProductDetailsPage />} />
-        <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/order-confirmation" element={<OrderConfirmationPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
-        <Route path="/wishlist" element={<WishlistPage />} />
-        <Route path="/tracking" element={<OrderTrackingPage />} />
-        {/* other store pages like /cart can go here */}
-      </Route>
+        {/* Public Store Routes */}
+        <Route element={<StoreLayout />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/categories" element={<CategoriesPage />} />
+          <Route path="/products" element={<ProductsPage />} />
+          <Route path="/products/:id" element={<ProductDetailsPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route
+            path="/order-confirmation"
+            element={<OrderConfirmationPage />}
+          />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/wishlist" element={<WishlistPage />} />
+          <Route path="/tracking" element={<OrderTrackingPage />} />
+          {/* other store pages like /cart can go here */}
+        </Route>
 
-      {/* Auth Routes */}
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/signup" element={<SignupPage />} />
+        {/* Auth Routes */}
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
 
-      {/* Admin Protected Routes */}
-      <Route
-        path="/admin"
-        element={
-          <ProtectedRoute allowedRoles={["admin"]}>
+        {/* Admin Protected Routes */}
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute allowedRoles={["admin"]}>
+              <DashboardLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<AdminDashboard />} />
 
-            <DashboardLayout />
-          </ProtectedRoute>
-        }
-      >
-        <Route index element={<AdminDashboard />} />
+          <Route path="products" element={<Products />} />
 
-  <Route path="products" element={<Products />} />
-  
-   <Route path="orders" element={<OrdersPage/>} />
-  <Route path="promotions" element={<div className="p-8 text-white">صفحة العروض (قريباً)</div>} />
-  <Route path="staff" element={<div className="p-8 text-white">صفحة الموظفين (قريباً)</div>} />
-  <Route path="settings" element={<div className="p-8 text-white">صفحة الإعدادات (قريباً)</div>} /> 
-</Route>
+          <Route path="orders" element={<OrdersPage />} />
+          <Route
+            path="promotions"
+            element={<div className="p-8 text-white">صفحة العروض (قريباً)</div>}
+          />
+          <Route
+            path="staff"
+            element={
+              <div className="p-8 text-white">صفحة الموظفين (قريباً)</div>
+            }
+          />
+          <Route
+            path="settings"
+            element={
+              <div className="p-8 text-white">صفحة الإعدادات (قريباً)</div>
+            }
+          />
+        </Route>
 
-      {/* Staff Protected Routes */}
-      <Route
-        path="/staff"
-        element={
-          <ProtectedRoute allowedRoles={["staff"]}>
-            <DashboardLayout />
-          </ProtectedRoute>
-        }
-      >
-        <Route index element={<StaffDashboardPage />} />
-        {/* other staff pages like /staff/orders can go here */}
-      </Route>
-      
-      {/* Fallback 404 Route */}
-      <Route path="*" element={<div className="min-h-screen bg-zinc-950 flex items-center justify-center text-white"><h1 className="text-4xl font-bold">404 - Page Not Found</h1></div>} />
-    </Routes>
+        {/* Staff Protected Routes */}
+        <Route
+          path="/staff"
+          element={
+            <ProtectedRoute allowedRoles={["staff"]}>
+              <DashboardLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<StaffDashboardPage />} />
+          {/* other staff pages like /staff/orders can go here */}
+        </Route>
+
+        {/* Fallback 404 Route */}
+        <Route
+          path="*"
+          element={
+            <div className="min-h-screen bg-zinc-950 flex items-center justify-center text-white">
+              <h1 className="text-4xl font-bold">404 - Page Not Found</h1>
+            </div>
+          }
+        />
+      </Routes>
     </>
   );
 }
