@@ -3,19 +3,29 @@ import { Toaster } from "react-hot-toast";
 import ProtectedRoute from "./auth/ProtectedRoute";
 
 // Layouts
-import StoreLayout from "./layouts/StoreLayout";
+import StoreLayout from "./components/user/layout/StoreLayout";
+import ScrollToTop from "./components/user/layout/ScrollToTop";
 import DashboardLayout from "./layouts/DashboardLayout";
 
 // Pages
-import Home from "./pages/user/Home";
-import Login from "./pages/auth/Login";
-import Signup from "./pages/auth/Signup";
-import AdminDashboard from "./pages/admin/AdminDashboard";
-import StaffDashboard from "./pages/staff/StaffDashboard";
+import HomePage from "./pages/user/HomePage";
+import ProductsPage from "./pages/user/ProductsPage";
+import ProductDetailsPage from "./pages/user/ProductDetailsPage";
+import CheckoutPage from "./pages/user/CheckoutPage";
+import OrderConfirmationPage from "./pages/user/OrderConfirmationPage";
+import ProfilePage from "./pages/user/ProfilePage";
+import WishlistPage from "./pages/user/WishlistPage";
+import OrderTrackingPage from "./pages/user/OrderTrackingPage";
+import CategoriesPage from "./pages/user/CategoriesPage";
+import LoginPage from "./pages/auth/LoginPage";
+import SignupPage from "./pages/auth/SignupPage";
+import AdminDashboardPage from "./pages/admin/AdminDashboardPage";
+import StaffDashboardPage from "./pages/staff/StaffDashboardPage";
 
 function App() {
   return (
     <>
+      <ScrollToTop />
       <Toaster
         position="top-center"
         toastOptions={{
@@ -29,13 +39,21 @@ function App() {
       <Routes>
       {/* Public Store Routes */}
       <Route element={<StoreLayout />}>
-        <Route path="/" element={<Home />} />
-        {/* other store pages like /products, /cart can go here */}
+        <Route path="/" element={<HomePage />} />
+        <Route path="/categories" element={<CategoriesPage />} />
+        <Route path="/products" element={<ProductsPage />} />
+        <Route path="/products/:id" element={<ProductDetailsPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/order-confirmation" element={<OrderConfirmationPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/wishlist" element={<WishlistPage />} />
+        <Route path="/tracking" element={<OrderTrackingPage />} />
+        {/* other store pages like /cart can go here */}
       </Route>
 
       {/* Auth Routes */}
-      <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="/signup" element={<SignupPage />} />
 
       {/* Admin Protected Routes */}
       <Route
@@ -46,7 +64,7 @@ function App() {
           </ProtectedRoute>
         }
       >
-        <Route index element={<AdminDashboard />} />
+        <Route index element={<AdminDashboardPage />} />
         {/* other admin pages like /admin/users can go here */}
       </Route>
 
@@ -59,7 +77,7 @@ function App() {
           </ProtectedRoute>
         }
       >
-        <Route index element={<StaffDashboard />} />
+        <Route index element={<StaffDashboardPage />} />
         {/* other staff pages like /staff/orders can go here */}
       </Route>
       

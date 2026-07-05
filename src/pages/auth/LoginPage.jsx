@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
-import useLogin from "../../../auth/useLogin";
-import AuthLayout from "../../../components/auth/AuthLayout";
-import AuthInput from "../../../components/auth/AuthInput";
-import AuthButton from "../../../components/auth/AuthButton";
+import { FiLogIn } from "react-icons/fi";
+import useLogin from "../../auth/useLogin";
+import AuthLayout from "../../components/auth/AuthLayout";
+import AuthInput from "../../components/auth/AuthInput";
+import AuthButton from "../../components/auth/AuthButton";
 
 export default function Login() {
   const { login } = useLogin();
@@ -94,7 +95,7 @@ export default function Login() {
           </label>
         </div>
 
-        <AuthButton type="submit" loading={loading} icon="login">
+        <AuthButton type="submit" loading={loading} icon={<FiLogIn />}>
           Sign In
         </AuthButton>
       </form>

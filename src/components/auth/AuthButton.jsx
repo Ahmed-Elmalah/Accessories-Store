@@ -32,7 +32,7 @@ export default function AuthButton({ children, loading, icon, ...props }) {
         <>
           <span>{children}</span>
           {icon && (
-            <span className="material-symbols-outlined text-sm">{icon}</span>
+            <span className="text-lg flex items-center">{icon}</span>
           )}
         </>
       )}
