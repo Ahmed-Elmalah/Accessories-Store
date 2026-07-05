@@ -55,7 +55,7 @@ export default function AdminDashboard() {
           </select>
         </div>
         <div className="chart-container overflow-x-auto">
-          <div className="min-w-[600px] h-full">
+          <div className="min-w-150 h-full">
             <svg height="100%" preserveAspectRatio="none" viewBox="0 0 800 300" width="100%">
               <defs>
                 <linearGradient id="chart-gradient" x1="0" x2="0" y1="0" y2="1">

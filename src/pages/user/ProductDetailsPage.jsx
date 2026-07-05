@@ -174,7 +174,7 @@ export default function ProductDetailsPage() {
       {/* Related Products */}
       <section className="mb-16">
         <h2 className="font-headline text-3xl italic font-light text-center mb-12 text-white">Complete the Look</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-8">
           {relatedProducts.map(prod => (
             <ProductCard key={prod.id} product={prod} />
           ))}

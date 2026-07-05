@@ -54,7 +54,7 @@ export default function FeaturedProducts() {
   };
 
   return (
-    <section className="py-24 px-6 sm:px-12 max-w-[90rem] mx-auto border-b border-[#D4AF37]/10">
+    <section className="py-24 px-6 sm:px-12 max-w-360 mx-auto border-b border-primary/10">
       <FadeIn delay={0}>
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <div className="max-w-2xl">
@@ -68,7 +68,7 @@ export default function FeaturedProducts() {
         </div>
         <div>
           <Link
-            className="text-[#D4AF37] text-sm font-label uppercase tracking-[0.2em] hover:text-white transition-colors flex items-center gap-4 group"
+            className="text-primary text-sm font-label uppercase tracking-[0.2em] hover:text-white transition-colors flex items-center gap-4 group"
             to="/products"
           >
             View All
@@ -78,43 +78,35 @@ export default function FeaturedProducts() {
       </div>
       </FadeIn>
 
-      <div className="flex overflow-x-auto gap-8 snap-x snap-mandatory no-scrollbar pb-8">
+      <div className="flex overflow-x-auto gap-4 snap-x snap-mandatory no-scrollbar pb-8">
         {products.map((product, index) => (
-          <FadeIn key={product.id} delay={Math.min(index * 100, 500)} className="group flex flex-col min-w-[280px] sm:min-w-[320px] snap-start shrink-0">
-            <Link to={`/products/${product.id}`} className="relative aspect-square overflow-hidden mb-4 bg-neutral-900/30 border border-[#D4AF37]/5 block">
+          <FadeIn key={product.id} delay={Math.min(index * 100, 500)} className="group flex flex-col w-50 sm:w-60 md:w-70 shrink-0 snap-start">
+            <Link to={`/products/${product.id}`} className="relative aspect-square overflow-hidden mb-3 block">
               <img
-                className="object-cover w-full h-full transition-transform duration-1000 group-hover:scale-105 opacity-90 group-hover:opacity-100"
+                className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
                 alt={product.name}
                 src={product.image}
               />
+              <div className="absolute bottom-3 left-3 bg-surface-container text-white text-[10px] uppercase font-bold tracking-widest px-3 py-1 rounded-full">
+                Sale
+              </div>
               <button
-                className="absolute top-4 right-4 p-2 text-neutral-400 hover:text-[#D4AF37] bg-[#0a0a0a]/50 backdrop-blur-sm rounded-full transition-colors z-10 focus:outline-none"
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); }}
+                className="absolute top-3 right-3 text-white/70 hover:text-primary transition-colors z-10 focus:outline-none drop-shadow-md"
               >
-                <FiHeart className="text-lg" />
+                <FiHeart className="text-xl" />
               </button>
-              <div className="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out z-10 bg-gradient-to-t from-[#0a0a0a]/90 to-transparent">
-                <button 
-                  onClick={(e) => handleQuickAdd(e, product)}
-                  className="w-full bg-[#D4AF37] text-[#0a0a0a] font-label uppercase tracking-[0.2em] py-3 text-xs hover:bg-white transition-colors"
-                >
-                  Quick Add
-                </button>
-              </div>
             </Link>
-            <div className="flex justify-between items-start">
-              <div>
-                <Link to={`/products/${product.id}`}>
-                  <h4 className="text-white font-headline text-xl mb-1 hover:text-[#D4AF37] transition-colors">
-                    {product.name}
-                  </h4>
-                </Link>
-                <p className="text-neutral-500 text-sm font-body">
-                  {product.variant}
-                </p>
+            <div className="flex flex-col">
+              <Link to={`/products/${product.id}`}>
+                <h4 className="text-white text-sm font-medium mb-1 hover:text-primary transition-colors truncate">
+                  {product.name}
+                </h4>
+              </Link>
+              <div className="flex items-center gap-2 text-xs">
+                <span className="text-neutral-500 line-through">LE {product.price + 50}.00 EGP</span>
+                <span className="text-white font-medium">From LE {product.price}.00 EGP</span>
               </div>
-              <span className="text-[#D4AF37] font-headline text-lg italic">
-                ${product.price}
-              </span>
             </div>
           </FadeIn>
         ))}

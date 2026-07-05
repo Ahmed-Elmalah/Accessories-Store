@@ -5,9 +5,11 @@ import { MdWorkspacePremium, MdBadge } from "react-icons/md";
 import toast from "react-hot-toast";
 
 import useLogin from "../../auth/useLogin";
+import OrderTrackingPage from "./OrderTrackingPage";
 
 export default function ProfilePage() {
   const { logOut } = useLogin();
+  const [activeTab, setActiveTab] = useState("details");
   const [user, setUser] = useState({
     firstName: "Ahmed",
     lastName: "Elmalah",
@@ -33,19 +35,15 @@ export default function ProfilePage() {
       <div className="bg-[#111111] border-b border-[#333333]">
         <div className="max-w-5xl mx-auto px-6">
           <nav className="flex overflow-x-auto gap-8 no-scrollbar">
-            <Link to="/profile" className="py-4 text-sm font-label uppercase tracking-widest text-[#D4AF37] border-b-2 border-[#D4AF37] whitespace-nowrap flex items-center gap-2">
+            <button onClick={() => setActiveTab("details")} className={`py-4 text-sm font-label uppercase tracking-widest whitespace-nowrap flex items-center gap-2 transition-colors ${activeTab === 'details' ? 'text-[#D4AF37] border-b-2 border-[#D4AF37]' : 'text-neutral-400 hover:text-[#D4AF37]'}`}>
               <FiUser className="text-lg" />
               Account Details
-            </Link>
-            <Link to="/tracking" className="py-4 text-sm font-label uppercase tracking-widest text-neutral-400 hover:text-[#D4AF37] transition-colors whitespace-nowrap flex items-center gap-2">
+            </button>
+            <button onClick={() => setActiveTab("orders")} className={`py-4 text-sm font-label uppercase tracking-widest whitespace-nowrap flex items-center gap-2 transition-colors ${activeTab === 'orders' ? 'text-[#D4AF37] border-b-2 border-[#D4AF37]' : 'text-neutral-400 hover:text-[#D4AF37]'}`}>
               <FiPackage className="text-lg" />
               My Orders
-            </Link>
-            <Link to="/wishlist" className="py-4 text-sm font-label uppercase tracking-widest text-neutral-400 hover:text-[#D4AF37] transition-colors whitespace-nowrap flex items-center gap-2">
-              <FiHeart className="text-lg" />
-              Wishlist
-            </Link>
-            <button className="py-4 text-sm font-label uppercase tracking-widest text-neutral-400 hover:text-[#D4AF37] transition-colors whitespace-nowrap flex items-center gap-2 ml-auto">
+            </button>
+            <button onClick={logOut} className="py-4 text-sm font-label uppercase tracking-widest text-neutral-400 hover:text-[#D4AF37] transition-colors whitespace-nowrap flex items-center gap-2 ml-auto">
               <FiLogOut className="text-lg" />
               Logout
             </button>
@@ -54,8 +52,9 @@ export default function ProfilePage() {
       </div>
 
       {/* Main Content */}
-      <main className="flex-grow p-6 md:p-12 lg:p-16">
-        <div className="max-w-5xl mx-auto">
+      {activeTab === "details" ? (
+        <div className="flex-grow p-6 md:p-12 lg:p-16">
+          <div className="max-w-5xl mx-auto">
           {/* Header */}
           <header className="mb-12 text-center md:text-left flex flex-col md:flex-row md:justify-between md:items-end gap-6">
             <div>
@@ -157,7 +156,10 @@ export default function ProfilePage() {
 
           </div>
         </div>
-      </main>
+      </div>
+      ) : (
+        <OrderTrackingPage />
+      )}
     </div>
   );
 }

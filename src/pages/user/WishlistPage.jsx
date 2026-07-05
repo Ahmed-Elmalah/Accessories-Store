@@ -52,7 +52,7 @@ export default function WishlistPage() {
       </div>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-4 gap-y-8 sm:gap-x-8 sm:gap-y-12 xl:grid-cols-5">
         {wishlistItems.map((item, index) => (
           <div key={item.id} className={`group relative flex flex-col animate-fade-in-up animation-delay-${Math.min(index * 100, 500)}`}>
             <Link to={`/products/${item.id}`} className="relative aspect-[3/4] overflow-hidden bg-surface-container mb-6 border border-[#222] block">
